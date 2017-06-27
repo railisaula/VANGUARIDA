@@ -1,0 +1,74 @@
+﻿@model WebService.Models.Segmentos
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Segmentos</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Id_SegmentoPadre)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Id_SegmentoPadre)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Titulo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Descripcion)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Visible)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Visible)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IdF_Pais)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IdF_Pais)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Cursos.Nombre)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Cursos.Nombre)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IdT_Segmento }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

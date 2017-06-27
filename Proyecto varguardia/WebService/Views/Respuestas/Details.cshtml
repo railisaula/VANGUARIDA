@@ -1,0 +1,82 @@
+﻿@model WebService.Models.Respuestas
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Respuestas</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TituloRespuesta)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TituloRespuesta)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TextoRespuesta)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TextoRespuesta)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Correcto)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Correcto)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Ponderacion)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Ponderacion)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AspNetUsers.Email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AspNetUsers.Email)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Preguntas.Titulo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Preguntas.Titulo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Pruebas.Titulo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Pruebas.Titulo)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IdT_Respuesta }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

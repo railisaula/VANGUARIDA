@@ -1,0 +1,50 @@
+﻿@model WebService.Models.Resultados
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Resultados</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Intento)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Intento)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Pruebas.Titulo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Pruebas.Titulo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Respuestas.IdF_Usuario)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Respuestas.IdF_Usuario)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IdT_Resultado }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -1,0 +1,978 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DAVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contenidos">
+          <Key>
+            <PropertyRef Name="IdT_Contenido" />
+          </Key>
+          <Property Name="IdT_Contenido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Archivo" Type="varbinary(max)" />
+          <Property Name="Enlace" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contenidos_X_Segmentos">
+          <Key>
+            <PropertyRef Name="IdF_Segmento" />
+            <PropertyRef Name="IdF_Contenido" />
+          </Key>
+          <Property Name="IdF_Segmento" Type="int" Nullable="false" />
+          <Property Name="IdF_Contenido" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cursos">
+          <Key>
+            <PropertyRef Name="IdT_Curso" />
+          </Key>
+          <Property Name="IdT_Curso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Id_CursoRequisito" Type="int" />
+          <Property Name="Autorizado" Type="bit" Nullable="false" />
+          <Property Name="IdF_Pais" Type="int" Nullable="false" />
+          <Property Name="NotaMinima" Type="int" />
+          <Property Name="Visible" Type="bit" Nullable="false" />
+          <Property Name="IdF_UsuarioCreacion" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="IdF_UsuarioModificacion" Type="nvarchar" MaxLength="128" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Opciones">
+          <Key>
+            <PropertyRef Name="IdT_Opcion" />
+          </Key>
+          <Property Name="IdT_Opcion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Preguntas">
+          <Key>
+            <PropertyRef Name="IdT_Pregunta" />
+          </Key>
+          <Property Name="IdT_Pregunta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IMG" Type="varbinary(max)" />
+          <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdF_Opcion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pruebas">
+          <Key>
+            <PropertyRef Name="IdT_Prueba" />
+          </Key>
+          <Property Name="IdT_Prueba" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Intentos" Type="int" Nullable="false" />
+          <Property Name="Aleatorio" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Respuestas">
+          <Key>
+            <PropertyRef Name="IdT_Respuesta" />
+          </Key>
+          <Property Name="IdT_Respuesta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdF_Pregunta" Type="int" Nullable="false" />
+          <Property Name="IdF_Prueba" Type="int" Nullable="false" />
+          <Property Name="IdF_Usuario" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="TituloRespuesta" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TextoRespuesta" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Correcto" Type="bit" Nullable="false" />
+          <Property Name="Ponderacion" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Resultados">
+          <Key>
+            <PropertyRef Name="IdT_Resultado" />
+          </Key>
+          <Property Name="IdT_Resultado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdF_Respuesta" Type="int" Nullable="false" />
+          <Property Name="IdF_Prueba" Type="int" Nullable="false" />
+          <Property Name="Intento" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Segmentos">
+          <Key>
+            <PropertyRef Name="IdT_Segmento" />
+          </Key>
+          <Property Name="IdT_Segmento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdF_Curso" Type="int" Nullable="false" />
+          <Property Name="Id_SegmentoPadre" Type="int" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Visible" Type="bit" Nullable="false" />
+          <Property Name="IdF_Pais" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Contenido__IdF_C__29572725">
+          <End Role="Contenidos" Type="Self.Contenidos" Multiplicity="1" />
+          <End Role="Contenidos_X_Segmentos" Type="Self.Contenidos_X_Segmentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contenidos">
+              <PropertyRef Name="IdT_Contenido" />
+            </Principal>
+            <Dependent Role="Contenidos_X_Segmentos">
+              <PropertyRef Name="IdF_Contenido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contenido__IdF_S__286302EC">
+          <End Role="Segmentos" Type="Self.Segmentos" Multiplicity="1" />
+          <End Role="Contenidos_X_Segmentos" Type="Self.Contenidos_X_Segmentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Segmentos">
+              <PropertyRef Name="IdT_Segmento" />
+            </Principal>
+            <Dependent Role="Contenidos_X_Segmentos">
+              <PropertyRef Name="IdF_Segmento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cursos__IdF_Usua__1FCDBCEB">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cursos">
+              <PropertyRef Name="IdF_UsuarioCreacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cursos__IdF_Usua__20C1E124">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cursos">
+              <PropertyRef Name="IdF_UsuarioModificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Respuesta__IdF_P__31EC6D26">
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="1" />
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preguntas">
+              <PropertyRef Name="IdT_Pregunta" />
+            </Principal>
+            <Dependent Role="Respuestas">
+              <PropertyRef Name="IdF_Pregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Respuesta__IdF_P__32E0915F">
+          <End Role="Pruebas" Type="Self.Pruebas" Multiplicity="1" />
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pruebas">
+              <PropertyRef Name="IdT_Prueba" />
+            </Principal>
+            <Dependent Role="Respuestas">
+              <PropertyRef Name="IdF_Prueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Respuesta__IdF_U__33D4B598">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Respuestas">
+              <PropertyRef Name="IdF_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Resultado__IdF_P__37A5467C">
+          <End Role="Pruebas" Type="Self.Pruebas" Multiplicity="1" />
+          <End Role="Resultados" Type="Self.Resultados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pruebas">
+              <PropertyRef Name="IdT_Prueba" />
+            </Principal>
+            <Dependent Role="Resultados">
+              <PropertyRef Name="IdF_Prueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Resultado__IdF_R__36B12243">
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="1" />
+          <End Role="Resultados" Type="Self.Resultados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Respuestas">
+              <PropertyRef Name="IdT_Respuesta" />
+            </Principal>
+            <Dependent Role="Resultados">
+              <PropertyRef Name="IdF_Respuesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Segmentos__IdF_C__239E4DCF">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
+          <End Role="Segmentos" Type="Self.Segmentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="IdT_Curso" />
+            </Principal>
+            <Dependent Role="Segmentos">
+              <PropertyRef Name="IdF_Curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DAVModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contenidos" EntityType="Self.Contenidos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contenidos_X_Segmentos" EntityType="Self.Contenidos_X_Segmentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Opciones" EntityType="Self.Opciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Preguntas" EntityType="Self.Preguntas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pruebas" EntityType="Self.Pruebas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Respuestas" EntityType="Self.Respuestas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resultados" EntityType="Self.Resultados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Segmentos" EntityType="Self.Segmentos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Contenido__IdF_C__29572725" Association="Self.FK__Contenido__IdF_C__29572725">
+            <End Role="Contenidos" EntitySet="Contenidos" />
+            <End Role="Contenidos_X_Segmentos" EntitySet="Contenidos_X_Segmentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contenido__IdF_S__286302EC" Association="Self.FK__Contenido__IdF_S__286302EC">
+            <End Role="Segmentos" EntitySet="Segmentos" />
+            <End Role="Contenidos_X_Segmentos" EntitySet="Contenidos_X_Segmentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cursos__IdF_Usua__1FCDBCEB" Association="Self.FK__Cursos__IdF_Usua__1FCDBCEB">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Cursos" EntitySet="Cursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cursos__IdF_Usua__20C1E124" Association="Self.FK__Cursos__IdF_Usua__20C1E124">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Cursos" EntitySet="Cursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Respuesta__IdF_P__31EC6D26" Association="Self.FK__Respuesta__IdF_P__31EC6D26">
+            <End Role="Preguntas" EntitySet="Preguntas" />
+            <End Role="Respuestas" EntitySet="Respuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Respuesta__IdF_P__32E0915F" Association="Self.FK__Respuesta__IdF_P__32E0915F">
+            <End Role="Pruebas" EntitySet="Pruebas" />
+            <End Role="Respuestas" EntitySet="Respuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Respuesta__IdF_U__33D4B598" Association="Self.FK__Respuesta__IdF_U__33D4B598">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Respuestas" EntitySet="Respuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Resultado__IdF_P__37A5467C" Association="Self.FK__Resultado__IdF_P__37A5467C">
+            <End Role="Pruebas" EntitySet="Pruebas" />
+            <End Role="Resultados" EntitySet="Resultados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Resultado__IdF_R__36B12243" Association="Self.FK__Resultado__IdF_R__36B12243">
+            <End Role="Respuestas" EntitySet="Respuestas" />
+            <End Role="Resultados" EntitySet="Resultados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Segmentos__IdF_C__239E4DCF" Association="Self.FK__Segmentos__IdF_C__239E4DCF">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="Segmentos" EntitySet="Segmentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DAVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="Cursos" Relationship="Self.FK__Cursos__IdF_Usua__1FCDBCEB" FromRole="AspNetUsers" ToRole="Cursos" />
+          <NavigationProperty Name="Cursos1" Relationship="Self.FK__Cursos__IdF_Usua__20C1E124" FromRole="AspNetUsers" ToRole="Cursos" />
+          <NavigationProperty Name="Respuestas" Relationship="Self.FK__Respuesta__IdF_U__33D4B598" FromRole="AspNetUsers" ToRole="Respuestas" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Contenidos">
+          <Key>
+            <PropertyRef Name="IdT_Contenido" />
+          </Key>
+          <Property Name="IdT_Contenido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Archivo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Enlace" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Segmentos" Relationship="Self.Contenidos_X_Segmentos" FromRole="Contenidos" ToRole="Segmentos" />
+        </EntityType>
+        <EntityType Name="Cursos">
+          <Key>
+            <PropertyRef Name="IdT_Curso" />
+          </Key>
+          <Property Name="IdT_Curso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id_CursoRequisito" Type="Int32" />
+          <Property Name="Autorizado" Type="Boolean" Nullable="false" />
+          <Property Name="IdF_Pais" Type="Int32" Nullable="false" />
+          <Property Name="NotaMinima" Type="Int32" />
+          <Property Name="Visible" Type="Boolean" Nullable="false" />
+          <Property Name="IdF_UsuarioCreacion" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdF_UsuarioModificacion" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK__Cursos__IdF_Usua__1FCDBCEB" FromRole="Cursos" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers1" Relationship="Self.FK__Cursos__IdF_Usua__20C1E124" FromRole="Cursos" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Segmentos" Relationship="Self.FK__Segmentos__IdF_C__239E4DCF" FromRole="Cursos" ToRole="Segmentos" />
+        </EntityType>
+        <EntityType Name="Opciones">
+          <Key>
+            <PropertyRef Name="IdT_Opcion" />
+          </Key>
+          <Property Name="IdT_Opcion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Preguntas">
+          <Key>
+            <PropertyRef Name="IdT_Pregunta" />
+          </Key>
+          <Property Name="IdT_Pregunta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IMG" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdF_Opcion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Respuestas" Relationship="Self.FK__Respuesta__IdF_P__31EC6D26" FromRole="Preguntas" ToRole="Respuestas" />
+        </EntityType>
+        <EntityType Name="Pruebas">
+          <Key>
+            <PropertyRef Name="IdT_Prueba" />
+          </Key>
+          <Property Name="IdT_Prueba" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Intentos" Type="Int32" Nullable="false" />
+          <Property Name="Aleatorio" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Respuestas" Relationship="Self.FK__Respuesta__IdF_P__32E0915F" FromRole="Pruebas" ToRole="Respuestas" />
+          <NavigationProperty Name="Resultados" Relationship="Self.FK__Resultado__IdF_P__37A5467C" FromRole="Pruebas" ToRole="Resultados" />
+        </EntityType>
+        <EntityType Name="Respuestas">
+          <Key>
+            <PropertyRef Name="IdT_Respuesta" />
+          </Key>
+          <Property Name="IdT_Respuesta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdF_Pregunta" Type="Int32" Nullable="false" />
+          <Property Name="IdF_Prueba" Type="Int32" Nullable="false" />
+          <Property Name="IdF_Usuario" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TituloRespuesta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TextoRespuesta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Correcto" Type="Boolean" Nullable="false" />
+          <Property Name="Ponderacion" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK__Respuesta__IdF_U__33D4B598" FromRole="Respuestas" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Preguntas" Relationship="Self.FK__Respuesta__IdF_P__31EC6D26" FromRole="Respuestas" ToRole="Preguntas" />
+          <NavigationProperty Name="Pruebas" Relationship="Self.FK__Respuesta__IdF_P__32E0915F" FromRole="Respuestas" ToRole="Pruebas" />
+          <NavigationProperty Name="Resultados" Relationship="Self.FK__Resultado__IdF_R__36B12243" FromRole="Respuestas" ToRole="Resultados" />
+        </EntityType>
+        <EntityType Name="Resultados">
+          <Key>
+            <PropertyRef Name="IdT_Resultado" />
+          </Key>
+          <Property Name="IdT_Resultado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdF_Respuesta" Type="Int32" Nullable="false" />
+          <Property Name="IdF_Prueba" Type="Int32" Nullable="false" />
+          <Property Name="Intento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pruebas" Relationship="Self.FK__Resultado__IdF_P__37A5467C" FromRole="Resultados" ToRole="Pruebas" />
+          <NavigationProperty Name="Respuestas" Relationship="Self.FK__Resultado__IdF_R__36B12243" FromRole="Resultados" ToRole="Respuestas" />
+        </EntityType>
+        <EntityType Name="Segmentos">
+          <Key>
+            <PropertyRef Name="IdT_Segmento" />
+          </Key>
+          <Property Name="IdT_Segmento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdF_Curso" Type="Int32" Nullable="false" />
+          <Property Name="Id_SegmentoPadre" Type="Int32" />
+          <Property Name="Titulo" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Visible" Type="Boolean" Nullable="false" />
+          <Property Name="IdF_Pais" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cursos" Relationship="Self.FK__Segmentos__IdF_C__239E4DCF" FromRole="Segmentos" ToRole="Cursos" />
+          <NavigationProperty Name="Contenidos" Relationship="Self.Contenidos_X_Segmentos" FromRole="Segmentos" ToRole="Contenidos" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cursos__IdF_Usua__1FCDBCEB">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cursos">
+              <PropertyRef Name="IdF_UsuarioCreacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cursos__IdF_Usua__20C1E124">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cursos">
+              <PropertyRef Name="IdF_UsuarioModificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Respuesta__IdF_U__33D4B598">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Respuestas">
+              <PropertyRef Name="IdF_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Segmentos__IdF_C__239E4DCF">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
+          <End Role="Segmentos" Type="Self.Segmentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="IdT_Curso" />
+            </Principal>
+            <Dependent Role="Segmentos">
+              <PropertyRef Name="IdF_Curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Respuesta__IdF_P__31EC6D26">
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="1" />
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preguntas">
+              <PropertyRef Name="IdT_Pregunta" />
+            </Principal>
+            <Dependent Role="Respuestas">
+              <PropertyRef Name="IdF_Pregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Respuesta__IdF_P__32E0915F">
+          <End Role="Pruebas" Type="Self.Pruebas" Multiplicity="1" />
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pruebas">
+              <PropertyRef Name="IdT_Prueba" />
+            </Principal>
+            <Dependent Role="Respuestas">
+              <PropertyRef Name="IdF_Prueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Resultado__IdF_P__37A5467C">
+          <End Role="Pruebas" Type="Self.Pruebas" Multiplicity="1" />
+          <End Role="Resultados" Type="Self.Resultados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pruebas">
+              <PropertyRef Name="IdT_Prueba" />
+            </Principal>
+            <Dependent Role="Resultados">
+              <PropertyRef Name="IdF_Prueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Resultado__IdF_R__36B12243">
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="1" />
+          <End Role="Resultados" Type="Self.Resultados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Respuestas">
+              <PropertyRef Name="IdT_Respuesta" />
+            </Principal>
+            <Dependent Role="Resultados">
+              <PropertyRef Name="IdF_Respuesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <Association Name="Contenidos_X_Segmentos">
+          <End Role="Contenidos" Type="Self.Contenidos" Multiplicity="*" />
+          <End Role="Segmentos" Type="Self.Segmentos" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DAVEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="Contenidos" EntityType="Self.Contenidos" />
+          <EntitySet Name="Cursos" EntityType="Self.Cursos" />
+          <EntitySet Name="Opciones" EntityType="Self.Opciones" />
+          <EntitySet Name="Preguntas" EntityType="Self.Preguntas" />
+          <EntitySet Name="Pruebas" EntityType="Self.Pruebas" />
+          <EntitySet Name="Respuestas" EntityType="Self.Respuestas" />
+          <EntitySet Name="Resultados" EntityType="Self.Resultados" />
+          <EntitySet Name="Segmentos" EntityType="Self.Segmentos" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cursos__IdF_Usua__1FCDBCEB" Association="Self.FK__Cursos__IdF_Usua__1FCDBCEB">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Cursos" EntitySet="Cursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cursos__IdF_Usua__20C1E124" Association="Self.FK__Cursos__IdF_Usua__20C1E124">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Cursos" EntitySet="Cursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Respuesta__IdF_U__33D4B598" Association="Self.FK__Respuesta__IdF_U__33D4B598">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Respuestas" EntitySet="Respuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Segmentos__IdF_C__239E4DCF" Association="Self.FK__Segmentos__IdF_C__239E4DCF">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="Segmentos" EntitySet="Segmentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Respuesta__IdF_P__31EC6D26" Association="Self.FK__Respuesta__IdF_P__31EC6D26">
+            <End Role="Preguntas" EntitySet="Preguntas" />
+            <End Role="Respuestas" EntitySet="Respuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Respuesta__IdF_P__32E0915F" Association="Self.FK__Respuesta__IdF_P__32E0915F">
+            <End Role="Pruebas" EntitySet="Pruebas" />
+            <End Role="Respuestas" EntitySet="Respuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Resultado__IdF_P__37A5467C" Association="Self.FK__Resultado__IdF_P__37A5467C">
+            <End Role="Pruebas" EntitySet="Pruebas" />
+            <End Role="Resultados" EntitySet="Resultados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Resultado__IdF_R__36B12243" Association="Self.FK__Resultado__IdF_R__36B12243">
+            <End Role="Respuestas" EntitySet="Respuestas" />
+            <End Role="Resultados" EntitySet="Resultados" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="Contenidos_X_Segmentos" Association="Self.Contenidos_X_Segmentos">
+            <End Role="Contenidos" EntitySet="Contenidos" />
+            <End Role="Segmentos" EntitySet="Segmentos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DAVModelStoreContainer" CdmEntityContainer="DAVEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="DAVModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="DAVModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="DAVModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="DAVModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="DAVModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contenidos">
+            <EntityTypeMapping TypeName="DAVModel.Contenidos">
+              <MappingFragment StoreEntitySet="Contenidos">
+                <ScalarProperty Name="IdT_Contenido" ColumnName="IdT_Contenido" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+                <ScalarProperty Name="Enlace" ColumnName="Enlace" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cursos">
+            <EntityTypeMapping TypeName="DAVModel.Cursos">
+              <MappingFragment StoreEntitySet="Cursos">
+                <ScalarProperty Name="IdT_Curso" ColumnName="IdT_Curso" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_CursoRequisito" ColumnName="Id_CursoRequisito" />
+                <ScalarProperty Name="Autorizado" ColumnName="Autorizado" />
+                <ScalarProperty Name="IdF_Pais" ColumnName="IdF_Pais" />
+                <ScalarProperty Name="NotaMinima" ColumnName="NotaMinima" />
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
+                <ScalarProperty Name="IdF_UsuarioCreacion" ColumnName="IdF_UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IdF_UsuarioModificacion" ColumnName="IdF_UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Opciones">
+            <EntityTypeMapping TypeName="DAVModel.Opciones">
+              <MappingFragment StoreEntitySet="Opciones">
+                <ScalarProperty Name="IdT_Opcion" ColumnName="IdT_Opcion" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preguntas">
+            <EntityTypeMapping TypeName="DAVModel.Preguntas">
+              <MappingFragment StoreEntitySet="Preguntas">
+                <ScalarProperty Name="IdT_Pregunta" ColumnName="IdT_Pregunta" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="IMG" ColumnName="IMG" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdF_Opcion" ColumnName="IdF_Opcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pruebas">
+            <EntityTypeMapping TypeName="DAVModel.Pruebas">
+              <MappingFragment StoreEntitySet="Pruebas">
+                <ScalarProperty Name="IdT_Prueba" ColumnName="IdT_Prueba" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Intentos" ColumnName="Intentos" />
+                <ScalarProperty Name="Aleatorio" ColumnName="Aleatorio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Respuestas">
+            <EntityTypeMapping TypeName="DAVModel.Respuestas">
+              <MappingFragment StoreEntitySet="Respuestas">
+                <ScalarProperty Name="IdT_Respuesta" ColumnName="IdT_Respuesta" />
+                <ScalarProperty Name="IdF_Pregunta" ColumnName="IdF_Pregunta" />
+                <ScalarProperty Name="IdF_Prueba" ColumnName="IdF_Prueba" />
+                <ScalarProperty Name="IdF_Usuario" ColumnName="IdF_Usuario" />
+                <ScalarProperty Name="TituloRespuesta" ColumnName="TituloRespuesta" />
+                <ScalarProperty Name="TextoRespuesta" ColumnName="TextoRespuesta" />
+                <ScalarProperty Name="Correcto" ColumnName="Correcto" />
+                <ScalarProperty Name="Ponderacion" ColumnName="Ponderacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resultados">
+            <EntityTypeMapping TypeName="DAVModel.Resultados">
+              <MappingFragment StoreEntitySet="Resultados">
+                <ScalarProperty Name="IdT_Resultado" ColumnName="IdT_Resultado" />
+                <ScalarProperty Name="IdF_Respuesta" ColumnName="IdF_Respuesta" />
+                <ScalarProperty Name="IdF_Prueba" ColumnName="IdF_Prueba" />
+                <ScalarProperty Name="Intento" ColumnName="Intento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Segmentos">
+            <EntityTypeMapping TypeName="DAVModel.Segmentos">
+              <MappingFragment StoreEntitySet="Segmentos">
+                <ScalarProperty Name="IdT_Segmento" ColumnName="IdT_Segmento" />
+                <ScalarProperty Name="IdF_Curso" ColumnName="IdF_Curso" />
+                <ScalarProperty Name="Id_SegmentoPadre" ColumnName="Id_SegmentoPadre" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
+                <ScalarProperty Name="IdF_Pais" ColumnName="IdF_Pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="DAVModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Contenidos_X_Segmentos" TypeName="DAVModel.Contenidos_X_Segmentos" StoreEntitySet="Contenidos_X_Segmentos">
+            <EndProperty Name="Contenidos">
+              <ScalarProperty Name="IdT_Contenido" ColumnName="IdF_Contenido" />
+            </EndProperty>
+            <EndProperty Name="Segmentos">
+              <ScalarProperty Name="IdT_Segmento" ColumnName="IdF_Segmento" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
